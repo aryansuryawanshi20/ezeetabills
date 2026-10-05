@@ -1,0 +1,147 @@
+/* General Styling */
+body {
+    background-color: #f0f5f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Styling */
+.container {
+    max-width: 800px; /* Increased width for better visibility */
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+h1 {
+    text-align: center;
+    color: green;
+}
+
+/* Form Container */
+.form-container {
+    display: grid;
+    gap: 10px;
+}
+
+/* Label Styling */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Inputs & Datalists */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[list] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+/* Hover & Focus Animation */
+input:focus {
+    outline: none;
+    border-color: green;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* Buttons */
+button {
+    background-color: green;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Button Hover */
+button:hover {
+    background-color: darkgreen;
+}
+
+/* View Data Button Styling */
+#viewData {
+    background-color: #007bff;
+    margin-left: 10px;
+}
+
+#viewData:hover {
+    background-color: #0056b3;
+}
+
+/* Journey Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Smooth Animation for Dropdown */
+datalist option {
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Datalist Option Hover */
+datalist option:hover {
+    background-color: #E0E0E0;
+}
+
+/* Notification Styling */
+.notification {
+    background-color: #ffcc00;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Multiple Journey Checkbox Styling */
+.multiple-journey-checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 0 0 10px 10px;
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EZEE TA Bill</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Sidebar Styles */
+    #sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 220px;
+      background-color: #1b5e20;
+      padding-top: 60px;
+      transition: transform 0.3s ease;
+      transform: translateX(-100%);
+      z-index: 1000;
+    }
+
+    #sidebar.open {
+      transform: translateX(0);
+    }
+
+    #sidebar a {
+      display: block;
+      color: white;
+      padding: 16px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+
+    #sidebar a:hover {
+      background-color: #388e3c;
+    }
+
+    #toggleSidebar {
+      position: fixed;
+      left: 10px;
+      top: 10px;
+      font-size: 26px;
+      color: #d2dbd2;
+      background-color: rgb(11, 83, 4);
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 60px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .form-container {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #f1f1f1;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      #sidebar {
+        width: 180px;
+      }
+      .container {
+        padding: 20px;
+      }
+    }
+    .collapsed .sidebar {
+        left: -240px;
+      }
+      .collapsed .main {
+        margin-left: 0;
+      }
+  </style>
+</head>
+<body>
+  <script>
+    const adminEmails = ["ganeshasurya83@gmail.com", "aryanvgsurya@gmail.com"];
+    const currentUser = localStorage.getItem("userEmail");
+
+    // Check if the user is one of the admins
+    if (adminEmails.includes(currentUser)) {
+      document.getElementById("adminLink").style.display = "block";
+    } else if (!localStorage.getItem("paidUser")) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <!-- Toggle Button -->
+  <div id="toggleSidebar">&#9776;</div>
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <a href="index.html">🏠 Home</a>
+    <a href="contact.html">📞 Contact</a>
+    <a href="help.html">❓ Help</a>
+    <div id="adminLink" style="display: none;">
+      <a href="admin.html">🛠 Admin Panel</a>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div class="container">
+    <h1 style="text-align:center;">EZEE TA Bill Generator</h1>
+    <div class="form-container">
+      <!-- Your untouched form -->
+      <div>
+        <label>Station (From):</label>
+        <input list="citiesList" id="fromStation" name="fromStation" autocomplete="off" />
+        <datalist id="citiesList"></datalist>
+      </div>
+      <div>
+        <label>Date (From):</label>
+        <input type="date" id="fromDate" autocomplete="off" />
+      </div>
+      <div>
+        <label>Hrs. (Time From):</label>
+        <input type="time" id="fromTime" autocomplete="off" />
+      </div>
+      <div>
+        <label>Station (To):</label>
+        <input list="citiesListTo" id="toStation" name="toStation" autocomplete="off" />
+        <datalist id="citiesListTo"></datalist>
+      </div>
+      <div>
+        <label>Date (To):</label>
+        <input type="date" id="toDate" autocomplete="off" />
+      </div>
+      <div>
+        <label>Hrs. (Time To):</label>
+        <input type="time" id="toTime" autocomplete="off" />
+      </div>
+      <div>
+        <label>Purpose of Journey:</label>
+        <input type="text" id="purpose" autocomplete="off" />
+      </div>
+      <div>
+        <label>Actual Km:</label>
+        <input type="number" id="actualKm" autocomplete="off" />
+      </div>
+      <div>
+        <label>ST Fare:</label>
+        <input type="number" id="stFare" autocomplete="off" />
+      </div>
+
+      <label>No. of DA:</label>
+      <select id="noOfDA">
+        <option value="0">0</option>
+        <option value="0.7">0.7</option>
+      </select>
+
+      <label for="daChoice">Rate of DA:</label>
+      <select id="rateOfDA">
+        <option value="0">0</option>
+        <option value="625">625</option>
+      </select>
+
+      <label for="daChoice">Amount of DA:</label>
+      <select id="amountOfDA">
+        <option value="0">0</option>
+        <option value="437.5">437.5</option>
+      </select>
+
+      <label>
+        <input type="checkbox" id="multipleJourneyCheckbox" />
+        Multiple Journey (Disable Auto Return)
+      </label>
+
+      <div>
+        <button id="addJourney">Add Journey</button>
+        <table id="journeyTable"></table>
+        <button id="downloadExcel">Download Excel</button>
+        <button id="viewData">View Data</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>Developed by Aryan Vandana Ganesh Suryawanshi</footer>
+
+  <script>
+    // Sidebar Toggle Logic
+    const toggleBtn = document.getElementById("toggleSidebar");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+  </script>
+
+  <script src="cities.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

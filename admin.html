@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #e6f5ec;
+      margin: 0;
+    }
+    .sidebar {
+      background-color: #004d40;
+      color: white;
+      padding: 20px;
+      height: 100vh;
+      width: 220px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transition: left 0.3s ease;
+    }
+    .sidebar a {
+      color: #aaf;
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      transition: margin-left 0.3s ease;
+      text-align: center;
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #004d40;
+      color: white;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 999;
+    }
+    .collapsed .sidebar {
+      left: -240px;
+    }
+    .collapsed .main {
+      margin-left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="index.html">Dashboard</a>
+    <a href="contact.html">Contact</a>
+    <a href="help.html">Help</a>
+  </div>
+
+  <div class="main">
+    <h1>Welcome, Admin!</h1>
+    <p>This section will display all registered users and payment status.</p>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.body.classList.toggle('collapsed');
+    }
+  </script>
+</body>
+</html>
